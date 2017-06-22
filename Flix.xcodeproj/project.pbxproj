@@ -18,6 +18,7 @@
 		FAE928521EFB184500FD0933 /* FlixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928511EFB184500FD0933 /* FlixUITests.swift */; };
 		FAE928601EFB201800FD0933 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9285F1EFB201800FD0933 /* NowPlayingViewController.swift */; };
 		FAE928621EFB2DD400FD0933 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928611EFB2DD400FD0933 /* MovieCell.swift */; };
+		FAE928661EFC776E00FD0933 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928651EFC776E00FD0933 /* MovieDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		FAE928531EFB184500FD0933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE9285F1EFB201800FD0933 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		FAE928611EFB2DD400FD0933 /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		FAE928651EFC776E00FD0933 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +148,7 @@
 				FAE9283A1EFB184500FD0933 /* LaunchScreen.storyboard */,
 				FAE9283D1EFB184500FD0933 /* Info.plist */,
 				FAE928611EFB2DD400FD0933 /* MovieCell.swift */,
+				FAE928651EFC776E00FD0933 /* MovieDetailViewController.swift */,
 			);
 			path = Flix;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAE928661EFC776E00FD0933 /* MovieDetailViewController.swift in Sources */,
 				FAE928601EFB201800FD0933 /* NowPlayingViewController.swift in Sources */,
 				FAE928321EFB184500FD0933 /* AppDelegate.swift in Sources */,
 				FAE928621EFB2DD400FD0933 /* MovieCell.swift in Sources */,
@@ -713,6 +717,7 @@
 				FAE928581EFB184500FD0933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAE928591EFB184500FD0933 /* Build configuration list for PBXNativeTarget "FlixTests" */ = {
 			isa = XCConfigurationList;
@@ -721,6 +726,7 @@
 				FAE9285B1EFB184500FD0933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FAE9285C1EFB184500FD0933 /* Build configuration list for PBXNativeTarget "FlixUITests" */ = {
 			isa = XCConfigurationList;
@@ -729,6 +735,7 @@
 				FAE9285E1EFB184500FD0933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
