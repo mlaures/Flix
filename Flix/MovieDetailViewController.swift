@@ -16,6 +16,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    var movie: [String: Any] = [:]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +27,44 @@ class MovieDetailViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // store information from the movie data that will need to be displayed in the list
+    override func viewWillAppear(_ animated: Bool) {
+        
+        // store and display title
+        let title = movie["title"] as! String
+        titleLabel.text = title
+
+        let desc = movie["overview"] as! String
+        descriptionLabel.text = desc
+        
+        let release = movie["release_date"] as! String
+        releaseLabel.text = "Release: \(release)"
+        
+        let base = "https://image.tmdb.org/t/p/w500"
+
+        // store and display poster
+        if let path = movie["poster_path"] as? String {
+            let posterURL = URL(string: base + path)
+            
+            // set the elements in the cell to be what needs to be displayed
+            posterImage.af_setImage(withURL: posterURL!)
+            
+        } else {
+            posterImage.image = nil
+        }
+        
+        // store and display background image
+        if let path = movie["backdrop_path"] as? String {
+            let posterURL = URL(string: base + path)
+            
+            // set the elements in the cell to be what needs to be displayed
+            backgroundImage.af_setImage(withURL: posterURL!)
+            
+        } else {
+            backgroundImage.image = nil
+        }
     }
     
 

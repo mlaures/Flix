@@ -102,16 +102,34 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         // store information from the movie data that will need to be displayed in the list
         let title = movie["title"] as! String
         let desc = movie["overview"] as! String
-        let path = movie["poster_path"] as! String
-        let base = "https://image.tmdb.org/t/p/w500"
-        let posterURL = URL(string: base + path)!
+        if let path = movie["poster_path"] as? String {
+            let base = "https://image.tmdb.org/t/p/w500"
+            let posterURL = URL(string: base + path)
         
-        // set the elements in the cell to be what needs to be displayed
-        cell.movieTitle.text = title
-        cell.movieDescription.text = desc
-        cell.movieImage.af_setImage(withURL: posterURL)
+            // set the elements in the cell to be what needs to be displayed
+            cell.movieTitle.text = title
+            cell.movieDescription.text = desc
+            cell.movieImage.af_setImage(withURL: posterURL!)
+    
+        } else {
+            cell.movieImage.image = nil
+        }
+
         
         return cell
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let control = segue.destination as! MovieDetailViewController
+        let cell = sender as! UITableViewCell
+        let index = movieTable.indexPath(for: cell)!
+        
+        let movie = movies[index.row]
+        
+        control.movie = movie
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        movieTable.deselectRow(at: indexPath, animated: true)
+    }
 }
