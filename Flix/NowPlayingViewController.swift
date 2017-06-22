@@ -63,7 +63,6 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
             } else if let data = data {
                 // store the JSON data in a recognizeable way
                 let dataDictionary = try! JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
-                print(dataDictionary)
                 
                 // put the wanted data (the movies) into an array of dictionaries
                 let movies = dataDictionary["results"] as! [[String:Any]]
@@ -119,16 +118,19 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         return cell
     }
 
+    // make sure to give the data that the detail view needs
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // set up the destination, cell, and index of the cell to grab information
         let control = segue.destination as! MovieDetailViewController
         let cell = sender as! UITableViewCell
         let index = movieTable.indexPath(for: cell)!
         
+        // pass the correct information from the list of movies to the next view
         let movie = movies[index.row]
-        
         control.movie = movie
     }
     
+    // fix the highlight animation after a cell is selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         movieTable.deselectRow(at: indexPath, animated: true)
     }
