@@ -10,6 +10,7 @@ import UIKit
 
 class MovieCell: UITableViewCell {
 
+    // Outlets that are part of the cell of the table
     @IBOutlet weak var movieImage: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieDescription: UILabel!
