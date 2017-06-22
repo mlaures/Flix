@@ -17,10 +17,16 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     // mutable list of dictionaries for the movies information
     var movies: [[String: Any]] = []
     
+    // loading signal for startup
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // start the loading symbol (the movies are loading)
+        activityIndicator.startAnimating()
         
         // enable refresh control for the table view
         refreshControl = UIRefreshControl()
@@ -67,6 +73,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
                 
                 // the network has finished fetching data, so if table is refreshing, end the loading signal
                 self.refreshControl.endRefreshing()
+                
+                // turn off the animation of the indicator
+                self.activityIndicator.stopAnimating()
                 
             }
         }
