@@ -19,14 +19,35 @@ class PosterViewController: UIViewController, UICollectionViewDataSource, UIColl
     // the list of movies that will be displayed
     var movies: [[String : Any]] = []
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // indicate that movies are being loaded
+        activityIndicator.startAnimating()
+        
+        // enable refresh control for the table view
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(PosterViewController.didPullToRefresh(_:)), for: .valueChanged)
+        
+        // where the refresh view will be shown
+        posterCollection.insertSubview(refreshControl, at: 0)
+        
+        // set this controller as the data for the collection
         posterCollection.dataSource = self
         posterCollection.delegate = self
         
+        // perform network call
         fetchSuperheros()
 
+    }
+    
+    // calls the fetch function whenever the refresh control is called
+    func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+//        loadingData = true
+//        pageCount = 1
+        fetchSuperheros()
     }
     
     func fetchSuperheros() {
@@ -51,6 +72,9 @@ class PosterViewController: UIViewController, UICollectionViewDataSource, UIColl
                 
                 // the network request finished so stop loading
                 self.activityIndicator.stopAnimating()
+                
+                // the network has finished fetching data, so if table is refreshing, end the loading signal
+                self.refreshControl.endRefreshing()
                 
             }
         }
@@ -88,10 +112,6 @@ class PosterViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         
         return cell
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        activityIndicator.startAnimating()
     }
     
     // make sure to give the data that the detail view needs
