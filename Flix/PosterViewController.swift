@@ -93,6 +93,19 @@ class PosterViewController: UIViewController, UICollectionViewDataSource, UIColl
     override func viewWillAppear(_ animated: Bool) {
         activityIndicator.startAnimating()
     }
+    
+    // make sure to give the data that the detail view needs
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // set up the destination, cell, and index of the cell to grab information
+        let control = segue.destination as! MovieDetailViewController
+        let cell = sender as! UICollectionViewCell
+        let index = posterCollection.indexPath(for: cell)!
+        
+        // pass the correct information from the list of movies to the next view
+        let movie = movies[index.row]
+        control.movie = movie
+    }
+    
     /*
     // MARK: - Navigation
 
