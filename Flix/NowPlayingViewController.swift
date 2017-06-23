@@ -50,6 +50,8 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     // calls the fetch function whenever the refresh control is called
     func didPullToRefresh(_ refreshControl: UIRefreshControl) {
         loadingData = true
+        // reset to the beginning! get the first page and remove all currently loaded movies
+        movies = []
         pageCount = 1
         fetchMovies()
     }
@@ -107,24 +109,25 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         // set where the cell is coming from
         let cell = movieTable.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as! MovieCell
         
-        let movie = movies[indexPath.row]
+        if !movies.isEmpty {
+            let movie = movies[indexPath.row]
         
-        // store information from the movie data that will need to be displayed in the list
-        let title = movie["title"] as! String
-        let desc = movie["overview"] as! String
-        if let path = movie["poster_path"] as? String {
-            let base = "https://image.tmdb.org/t/p/w500"
-            let posterURL = URL(string: base + path)
+            // store information from the movie data that will need to be displayed in the list
+            let title = movie["title"] as! String
+            let desc = movie["overview"] as! String
+            if let path = movie["poster_path"] as? String {
+                let base = "https://image.tmdb.org/t/p/w500"
+                let posterURL = URL(string: base + path)
         
-            // set the elements in the cell to be what needs to be displayed
-            cell.movieTitle.text = title
-            cell.movieDescription.text = desc
-            cell.movieImage.af_setImage(withURL: posterURL!)
-    
-        } else {
-            cell.movieImage.image = nil
+                // set the elements in the cell to be what needs to be displayed
+                cell.movieTitle.text = title
+                cell.movieDescription.text = desc
+                cell.movieImage.af_setImage(withURL: posterURL!)
+                
+            } else {
+                cell.movieImage.image = nil
+            }
         }
-
         
         return cell
     }
@@ -146,12 +149,14 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         movieTable.deselectRow(at: indexPath, animated: true)
     }
     
+    // function to load more movie data
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // do not already want to be loading the data
         if !loadingData {
             let tableHeight = movieTable.contentSize.height
             let scrollThreshold = tableHeight - movieTable.bounds.size.height
-            
-            if scrollView.contentOffset.y > scrollThreshold, movieTable.isDragging {
+            // should be a certain distance from the bottom of the list of movies before more data is loaded
+            if scrollView.contentOffset.y > scrollThreshold && movieTable.isDragging {
                 loadingData = true
                 activityIndicator.startAnimating()
                 pageCount += 1
