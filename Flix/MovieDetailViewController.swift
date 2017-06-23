@@ -15,11 +15,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionScroll: UIScrollView!
     
     var movie: [String: Any] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -38,6 +40,8 @@ class MovieDetailViewController: UIViewController {
 
         let desc = movie["overview"] as! String
         descriptionLabel.text = desc
+        descriptionLabel.sizeToFit()
+        descriptionScroll.contentSize = CGSize(width: 288.0, height: descriptionLabel.frame.size.height + 20.0)
         
         let release = movie["release_date"] as! String
         releaseLabel.text = "Release: \(release)"
