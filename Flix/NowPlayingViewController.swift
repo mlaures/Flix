@@ -20,6 +20,10 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     // loading signal for startup
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    // variables for infinite scrolling - next page of data and whether data is loading
+    var loadingData = false
+    var pageCount = 1
+    
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -32,17 +36,21 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(NowPlayingViewController.didPullToRefresh(_:)), for: .valueChanged)
         
+        // where the refresh indicator will be shown
         movieTable.insertSubview(refreshControl, at: 0)
         
         // using this script as the datasource, delegate for the tableview
         movieTable.dataSource = self
         movieTable.delegate = self
         
+        loadingData = true
         fetchMovies()
     }
     
     // calls the fetch function whenever the refresh control is called
     func didPullToRefresh(_ refreshControl: UIRefreshControl) {
+        loadingData = true
+        pageCount = 1
         fetchMovies()
     }
     
@@ -53,7 +61,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
      */
     func fetchMovies() {
         // This is the networking request
-        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US")!
+        let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US&page=\(pageCount)")!
         let request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10)
         let session = URLSession(configuration: .default, delegate: nil, delegateQueue: OperationQueue.main)
         let task = session.dataTask(with: request) { (data, response, error) in
@@ -66,7 +74,7 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
                 
                 // put the wanted data (the movies) into an array of dictionaries
                 let movies = dataDictionary["results"] as! [[String:Any]]
-                self.movies = movies
+                self.movies += movies
                 // reload the table so that it displays the information from the networking request
                 self.movieTable.reloadData()
                 
@@ -75,6 +83,9 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
                 
                 // turn off the animation of the indicator
                 self.activityIndicator.stopAnimating()
+                
+                // data is no longer loading
+                self.loadingData = false
                 
             }
         }
@@ -133,5 +144,19 @@ class NowPlayingViewController: UIViewController, UITableViewDataSource, UITable
     // fix the highlight animation after a cell is selected
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         movieTable.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !loadingData {
+            let tableHeight = movieTable.contentSize.height
+            let scrollThreshold = tableHeight - movieTable.bounds.size.height
+            
+            if scrollView.contentOffset.y > scrollThreshold, movieTable.isDragging {
+                loadingData = true
+                activityIndicator.startAnimating()
+                pageCount += 1
+                fetchMovies()
+            }
+        }
     }
 }
