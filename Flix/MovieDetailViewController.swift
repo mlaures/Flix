@@ -16,6 +16,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var releaseLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var descriptionScroll: UIScrollView!
+    @IBOutlet weak var relatedButton: UIBarButtonItem!
     
     var movie: [String: Any] = [:]
     
@@ -70,16 +71,22 @@ class MovieDetailViewController: UIViewController {
             backgroundImage.image = nil
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        // set up the destination, cell, and index of the cell to grab information
+        
+            let control = segue.destination as! UINavigationController
+            let view = control.viewControllers.first as! RelatedViewController
+            let id = movie["id"] as! Int
+        
+            // pass the correct information from the movie to the next view
+            view.movieOrigin = id
+        
     }
-    */
+
 
 }

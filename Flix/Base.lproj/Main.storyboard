@@ -133,7 +133,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.48167354316291411" green="0.48167354316291411" blue="0.48167354316291411" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FoR-77-C7B"/>
+                    <navigationItem key="navigationItem" id="FoR-77-C7B">
+                        <barButtonItem key="rightBarButtonItem" title="Related" id="0Aj-0d-rlH">
+                            <connections>
+                                <segue destination="QcP-Nj-QjR" kind="modal" id="RRe-TN-bAP"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="568"/>
                     <connections>
@@ -148,6 +154,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Iw-qo-ca5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1267" y="981"/>
+        </scene>
+        <!--Related View Controller-->
+        <scene sceneID="GjR-9d-RFW">
+            <objects>
+                <viewController id="ngB-Xh-Hwl" customClass="RelatedViewController" customModule="Flix" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9h1-WK-hm4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="mJx-pE-6lh">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="526"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ghB-zH-SGu">
+                                    <size key="itemSize" width="146" height="223"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="EU4-V3-uzj">
+                                    <rect key="frame" x="0.0" y="-64" width="320" height="526"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </activityIndicatorView>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PosterCell" id="WS0-O8-Xaz" customClass="PosterCell" customModule="Flix" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="146" height="223"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="146" height="223"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="XVj-XO-zFj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="223"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <connections>
+                                            <outlet property="posterImage" destination="XVj-XO-zFj" id="Ol4-tS-j1W"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" misplaced="YES" id="65w-7B-UYv">
+                                <rect key="frame" x="0.0" y="526" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" id="gLA-lN-7Tr">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1Fq-hg-oAJ">
+                                            <rect key="frame" x="16" y="7" width="287" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Dismiss"/>
+                                            <connections>
+                                                <action selector="buttonPress:" destination="ngB-Xh-Hwl" eventType="touchUpInside" id="TBK-KS-RPG"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="tVX-Hc-pxh">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="EU4-V3-uzj" id="y0O-5L-dpI"/>
+                        <outlet property="relatedPosters" destination="mJx-pE-6lh" id="zJV-uT-3Xg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AwN-JO-M2m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845" y="1812"/>
         </scene>
         <!--Now Playing-->
         <scene sceneID="fqE-3H-NGb">
@@ -241,7 +321,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rzW-X1-sKx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="643.359375" y="982.88556338028161"/>
+            <point key="canvasLocation" x="644" y="981"/>
         </scene>
         <!--Superhero-->
         <scene sceneID="wc2-wa-j6h">
@@ -262,6 +342,24 @@
             </objects>
             <point key="canvasLocation" x="21.25" y="983.82499999999993"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ad3-7L-hM1">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QcP-Nj-QjR" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u0z-t7-ayJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ngB-Xh-Hwl" kind="relationship" relationship="rootViewController" id="wEk-v9-s2O"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="51s-Jx-hb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1267" y="1812"/>
+        </scene>
     </scenes>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
@@ -273,6 +371,6 @@
         <simulatedScreenMetrics key="destination" type="retina4_0.fullscreen"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="Dga-S5-6XF"/>
+        <segue reference="wV9-go-fmJ"/>
     </inferredMetricsTieBreakers>
 </document>

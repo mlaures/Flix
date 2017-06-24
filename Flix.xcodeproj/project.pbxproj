@@ -21,6 +21,7 @@
 		FAE928661EFC776E00FD0933 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928651EFC776E00FD0933 /* MovieDetailViewController.swift */; };
 		FAE928681EFC91EE00FD0933 /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928671EFC91EE00FD0933 /* PosterViewController.swift */; };
 		FAE9286A1EFC933700FD0933 /* PosterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE928691EFC933700FD0933 /* PosterCell.swift */; };
+		FAE9286C1EFDD53600FD0933 /* RelatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9286B1EFDD53600FD0933 /* RelatedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		FAE928651EFC776E00FD0933 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		FAE928671EFC91EE00FD0933 /* PosterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
 		FAE928691EFC933700FD0933 /* PosterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
+		FAE9286B1EFDD53600FD0933 /* RelatedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelatedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				FAE9285F1EFB201800FD0933 /* NowPlayingViewController.swift */,
 				FAE928651EFC776E00FD0933 /* MovieDetailViewController.swift */,
 				FAE928671EFC91EE00FD0933 /* PosterViewController.swift */,
+				FAE9286B1EFDD53600FD0933 /* RelatedViewController.swift */,
 				FAE928351EFB184500FD0933 /* Main.storyboard */,
 				FAE928611EFB2DD400FD0933 /* MovieCell.swift */,
 				FAE928691EFC933700FD0933 /* PosterCell.swift */,
@@ -466,6 +469,7 @@
 				FAE9286A1EFC933700FD0933 /* PosterCell.swift in Sources */,
 				FAE928601EFB201800FD0933 /* NowPlayingViewController.swift in Sources */,
 				FAE928321EFB184500FD0933 /* AppDelegate.swift in Sources */,
+				FAE9286C1EFDD53600FD0933 /* RelatedViewController.swift in Sources */,
 				FAE928621EFB2DD400FD0933 /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
