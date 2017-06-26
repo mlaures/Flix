@@ -74,17 +74,19 @@ class MovieDetailViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+
+        // set up the final destination of the segue and the information to be passed on
+        let control = segue.destination as! UINavigationController
+        let view = control.viewControllers.first as! RelatedViewController
+        let id = movie["id"] as! Int
         
-        // set up the destination, cell, and index of the cell to grab information
+        // set the toolbar to be seen
+//        control.setToolbarHidden(false, animated: true)
+//        let button = UIBarButtonItem(title: "Dismiss", style: .plain, target: Any?, selector: view.buttonPress(Any))
+//        control.setToolbarItems([button], animated: true)
         
-            let control = segue.destination as! UINavigationController
-            let view = control.viewControllers.first as! RelatedViewController
-            let id = movie["id"] as! Int
-        
-            // pass the correct information from the movie to the next view
-            view.movieOrigin = id
+        // pass the correct information from the movie to the next view
+        view.movieOrigin = id
         
     }
 
