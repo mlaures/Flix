@@ -16,29 +16,30 @@ The following **required** functionality is complete:
 The following **optional** features are implemented:
 
 - [ ] User sees an error message when there's a networking error.
-- [ ] Movies are displayed using a CollectionView instead of a TableView.
+- [x] Movies are displayed using a CollectionView instead of a TableView.
 - [ ] User can search for a movie.
 - [ ] All images fade in as they are loading.
-- [ ] User can view the large movie poster by tapping on a cell.
+- [x] User can view the large movie poster by tapping on a cell.
 - [ ] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
 - [ ] Customize the selection effect of the cell.
-- [ ] Customize the navigation bar.
+- [x] Customize the navigation bar.
 - [ ] Customize the UI.
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Infinite Scrolling
+- [x] Related movies shown from Detailed Screen
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. How to get the Dismiss button in the toolbar to show up in all screens
+2. How to get more 3rd party libraries in the app
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src="http://i.imgur.com/MDYXgIC.gif" title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src="https://github.com/mlaures/Flix/blob/master/Flix_Demo.gif" title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
