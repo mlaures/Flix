@@ -13,6 +13,9 @@ class RelatedViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var relatedPosters: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var dismissButton: UIBarButtonItem!
+//    var button = dismissButton
+    
     var movieOrigin: Int = 0
     
     // the list of movies that will be displayed
@@ -134,6 +137,9 @@ class RelatedViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
 
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.setToolbarItems([dismissButton], animated: true)
+//    }
     
     @IBAction func buttonPress(_ sender: Any) {
         dismiss(animated: true, completion: nil)
